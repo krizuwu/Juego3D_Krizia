@@ -66,10 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamaraSeguimiento3D.cs" />
+    <Compile Include="Assets\Scripts\Trampa.cs" />
     <Compile Include="Assets\Scripts\GestorPuntos.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Movimiento3D.cs" />
     <Compile Include="Assets\Scripts\ControladorMenu.cs" />
+    <Compile Include="Assets\Scripts\GeneradorNiveles.cs" />
     <Compile Include="Assets\Scripts\Punto3D.cs" />
   </ItemGroup>
   <ItemGroup>
