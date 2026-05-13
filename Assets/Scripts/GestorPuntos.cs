@@ -1,5 +1,6 @@
 using UnityEngine;
-using TMPro; // Necesario para los textos de la interfaz
+using TMPro;
+using UnityEngine.SceneManagement; 
 
 public class GestorPuntos : MonoBehaviour
 {
@@ -9,9 +10,12 @@ public class GestorPuntos : MonoBehaviour
     public TextMeshProUGUI textoScore;
     public TextMeshProUGUI textoHighScore;
 
+    [Header("Configuración de Nivel")]
+    public string nombreSiguienteNivel = "Nivel2"; 
+    public int puntosParaGanar = 5; 
+
     void Start()
     {
-        // 1. GUARDADO DE DATOS: Cargamos el HighScore desde la memoria del celular/compu
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         ActualizarTextos();
     }
@@ -20,22 +24,25 @@ public class GestorPuntos : MonoBehaviour
     {
         score += cantidad;
         
-        // 2. CURVA DE DIFICULTAD PROGRESIVA: 
-        // Buscamos a tu jugador y le subimos la velocidad cada vez que anota
         Movimiento3D mov = Object.FindFirstObjectByType<Movimiento3D>();
         if(mov != null) {
-            mov.velocidad += 0.5f; // ¡Se vuelve más rápida y difícil de controlar!
+            mov.velocidad += 0.5f;
         }
 
-        // 3. GUARDADO DE DATOS: Revisamos si rompimos el récord
         if (score > highScore)
         {
             highScore = score;
             PlayerPrefs.SetInt("HighScore", highScore);
-            PlayerPrefs.Save(); // Guardamos en la memoria
+            PlayerPrefs.Save();
         }
         
         ActualizarTextos();
+
+        // REVISAR SI GANAMOS EL NIVEL
+        if (score >= puntosParaGanar)
+        {
+            SceneManager.LoadScene(nombreSiguienteNivel);
+        }
     }
 
     void ActualizarTextos()
