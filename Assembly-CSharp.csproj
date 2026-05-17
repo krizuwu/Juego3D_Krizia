@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GestorColores.cs" />
+    <Compile Include="Assets\Scripts\Turbo3D.cs" />
     <Compile Include="Assets\Scripts\CamaraSeguimiento3D.cs" />
     <Compile Include="Assets\Scripts\Trampa.cs" />
     <Compile Include="Assets\Scripts\GestorPuntos.cs" />

@@ -2,17 +2,16 @@ using UnityEngine;
 
 public class Punto3D : MonoBehaviour
 {
-    // Usamos OnTriggerEnter igual que en 2D, pero sin el "2D" al final de la palabra
     void OnTriggerEnter(Collider choque)
     {
-        if (choque.gameObject.name == "Jugador")
+        if (choque.gameObject.name == "Jugador") // Verifica que sea exactamente el Jugador
         {
-            GestorPuntos gestor = Object.FindFirstObjectByType<GestorPuntos>();
+            GestorPuntos gestor = Object.FindFirstObjectByType<GestorPuntos>(); // Busca tu contador de puntos
             if (gestor != null)
             {
-                gestor.SumarPunto(1);
+                gestor.SumarPunto(1); // Manda a sumar el punto a la UI
             }
-            Destroy(gameObject); // El cubo desaparece al tocarlo
+            Destroy(gameObject); // Desaparece el cubo al tocarlo
         }
     }
 }
